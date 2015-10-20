@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/hanazuki/terraform-provider-conoha/conoha"
 	"github.com/rackspace/gophercloud"
 	"github.com/rackspace/gophercloud/openstack"
 )
@@ -32,5 +33,15 @@ func (c *Config) computeClient() (*gophercloud.ServiceClient, error) {
 	}
 
 	return openstack.NewComputeV2(providerClient,
+		gophercloud.EndpointOpts{Region: c.Region})
+}
+
+func (c *Config) dnsClient() (*gophercloud.ServiceClient, error) {
+	providerClient, err := c.client()
+	if err != nil {
+		return nil, err
+	}
+
+	return conoha.NewDnsV1(providerClient,
 		gophercloud.EndpointOpts{Region: c.Region})
 }

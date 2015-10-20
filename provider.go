@@ -30,6 +30,7 @@ func Provider() *schema.Provider {
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"conoha_compute_keypair": resourceComputeKeypair(),
+			"conoha_dns_domain":      resourceDnsDomain(),
 		},
 		ConfigureFunc: configure,
 	}
