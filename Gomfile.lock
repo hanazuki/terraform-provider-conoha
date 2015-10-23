@@ -1,0 +1,1 @@
+gom 'github.com/rackspace/gophercloud', :commit => '63ee53d682169b50b8dfaca88722ba19bd5b17a6'
